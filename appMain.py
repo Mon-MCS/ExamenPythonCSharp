@@ -17,13 +17,13 @@ def mostrar_instrumentos():
     if instrument == "boligrafo":
         tinta = request.form["tinta"]
         punta = request.form["punta"]
-        instrumento_ingresado = Boligrafo(marca, modelo, color, tinta, punta)
+        instrumento_ingresado = Boligrafo(nombre=instrument, marca=marca, modelo=modelo, color=color, tinta=tinta, punta=punta)
     elif instrument == "lápiz":
         dureza = request.form["dureza"]
-        instrumento_ingresado = Lapiz(marca, modelo, color, dureza)
+        instrumento_ingresado = Lapiz(nombre=instrument,marca=marca, modelo=modelo, color=color, dureza=dureza)
     else:
         punta = request.form["punta"]
-        instrumento_ingresado = Rotulador(marca, modelo, color, punta)
+        instrumento_ingresado = Rotulador(nombre=instrument, marca=marca, modelo=modelo, color=color, punta=punta)
     
     # Renderizar la página de instrumentos con el instrumento seleccionado
     return render_template("instrumentos.html", instrumento=instrumento_ingresado)

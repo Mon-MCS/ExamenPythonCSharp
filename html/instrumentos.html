@@ -13,15 +13,15 @@
         <legend>Información de instrumentos</legend>
         <div class="form-group row">
             {% if instrumento %}
-            <p><strong>Modelo:</strong> {{ instrumento.modelo }}</p>
             <p><strong>Marca:</strong> {{ instrumento.marca }}</p>
+            <p><strong>Modelo:</strong> {{ instrumento.modelo }}</p>
             <p><strong>Color:</strong> {{ instrumento.color }}</p>
             <p><strong>Tinta:</strong> {{ instrumento.tinta }}</p>
-            {% if (instrumento.Nombre == "boligrafo") %}
-            <p><strong>punta:</strong> {{ instrumento.punta }}</p>
-            {% elif (instrumento.Nombre== "lápiz") %}
+            {% if (instrumento.nombre == "boligrafo") %}
+            <p><strong>Punta:</strong> {{ instrumento.punta }}</p>
+            {% elif (instrumento.nombre== "lápiz") %}
             <p><strong>Dureza:</strong> {{ instrumento.dureza }}</p>
-            {% elif (instrumento.Nombre == "rotulador") %}
+            {% elif (instrumento.nombre == "rotulador") %}
             <p><strong>Punta:</strong> {{ instrumento.punta }}</p>
             {% endif %}
             <p><strong>Descripcion:</strong> {{ instrumento.escribir() }}</p>
