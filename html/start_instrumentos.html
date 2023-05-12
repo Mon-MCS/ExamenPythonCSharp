@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Información de instrumentos de escritura</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+
+<body>
+  <form method="post" action="/instrumentos">
+    <legend>Información de instrumentos de escritura</legend>
+    <fieldset  class="d-grid" >
+      <label for="instrumento">Selecciona una instrumento:</label>
+      <select id="instrumento" name="instrumento" class="col-form-label col-form-label-sm">
+        <option value="boligrafo">Boligrafo</option>
+        <option value="lápiz">Lápiz</option>
+        <option value="rotulador">Rotulador</option>
+      </select>
+      <label for="modelo" class="col-form-label col-form-label-sm">Modelo:</label>
+      <input type="text" id="modelo" name="modelo" >
+      <label for="marca" class="col-form-label col-form-label-sm">Marca:</label>
+      <input type="text" id="marca" name="marca" >
+      <label for="color" class="col-form-label col-form-label-sm">Color:</label>
+      <input type="text" id="color" name="color" >     
+      <label for="tinta" class="col-form-label col-form-label-sm">Tinta:</label>
+      <input type="text" id="tinta" name="tinta" >        
+      <div id="atributos">
+          <label for="punta" class="col-form-label col-form-label-sm">Punta:</label>
+          <input type="text" id="punta" name="punta" >
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Revisar</button>
+  </form>
+
+  <script>
+    const instrumentoSelect = document.getElementById("instrumento");
+    const atributosDiv = document.getElementById("atributos");
+
+    function mostrarAtributos() {
+      const instrumento = instrumentoSelect.value;
+      atributosDiv.innerHTML = "";
+
+      if (instrumento === "boligrafo") {
+        atributosDiv.innerHTML += `
+        <label for="punta" class="col-form-label col-form-label-sm">Punta:</label>
+        <input type="text" id="punta" name="punta" >
+          `;
+      } else if (instrumento === "lápiz") {
+        atributosDiv.innerHTML += `
+            <label for="dureza" class="col-form-label col-form-label-sm">Dureza:</label>
+            <input type="text" id="dureza" name="dureza">
+          `;
+      } else if (instrumento === "rotulador") {
+        atributosDiv.innerHTML += `
+            <label for="punta" class="col-form-label col-form-label-sm">Punta:</label>
+            <input type="text" id="punta" name="punta">
+          `;
+      }
+    }
+    instrumentoSelect.addEventListener("change", mostrarAtributos);
+  </script>
+</body>
+
+</html>

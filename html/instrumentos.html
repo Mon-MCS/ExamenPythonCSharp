@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Información de instrumentos de escritura</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+
+<body>
+    <fieldset>
+        <legend>Información de instrumentos</legend>
+        <div class="form-group row">
+            {% if instrumento %}
+            <p><strong>Modelo:</strong> {{ instrumento.modelo }}</p>
+            <p><strong>Marca:</strong> {{ instrumento.marca }}</p>
+            <p><strong>Color:</strong> {{ instrumento.color }}</p>
+            <p><strong>Tinta:</strong> {{ instrumento.tinta }}</p>
+            {% if (instrumento.Nombre == "boligrafo") %}
+            <p><strong>punta:</strong> {{ instrumento.punta }}</p>
+            {% elif (instrumento.Nombre== "lápiz") %}
+            <p><strong>Dureza:</strong> {{ instrumento.dureza }}</p>
+            {% elif (instrumento.Nombre == "rotulador") %}
+            <p><strong>Punta:</strong> {{ instrumento.punta }}</p>
+            {% endif %}
+            <p><strong>Descripcion:</strong> {{ instrumento.escribir() }}</p>
+            {% else %}
+            <p>El instrumento seleccionada no fue encontrada en la lista.</p>
+            {% endif %}
+            <form method="get" action="/">
+                <button type="submit" class="btn btn-primary">Mas instrumentos</button>
+            </form>
+        </div>
+    </fieldset>
+</body>
+</html>
